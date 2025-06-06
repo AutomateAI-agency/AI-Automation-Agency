@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EliteMotors - Premium Automotive Collection</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #ff6b35;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff6b35, #f7931e);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .cart-icon {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff1744;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.8em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 50px;
+      flex-wrap: wrap;
+      min-height: 90vh;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .badge {
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(247,147,30,0.2));
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 0.9em;
+      margin-bottom: 30px;
+      display: inline-block;
+      border: 1px solid rgba(255,107,53,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .badge span {
+      color: #ff6b35;
+      font-weight: 600;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5em;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ff6b35, #f7931e, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-text p {
+      font-size: 1.2em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+
+    .btn-primary {
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255,107,53,0.3);
+      margin-right: 20px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(255,107,53,0.4);
+    }
+
+    .btn-secondary {
+      padding: 16px 32px;
+      border: 2px solid #ff6b35;
+      border-radius: 50px;
+      background: transparent;
+      color: #ff6b35;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,107,53,0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .car-showcase {
+      width: 500px;
+      height: 300px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(247,147,30,0.1));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,107,53,0.3);
+      font-size: 8em;
+    }
+
+    /* Categories Filter */
+    .categories {
+      padding: 60px 50px;
+      text-align: center;
+    }
+
+    .categories h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .category-btn {
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,107,53,0.3);
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      transform: translateY(-2px);
+    }
+
+    /* Cars Grid */
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      padding: 0 50px;
+      margin-bottom: 60px;
+    }
+
+    .car-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,107,53,0.05));
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(255,107,53,0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .car-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b35, #f7931e);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .car-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(255,107,53,0.2);
+    }
+
+    .car-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .category-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .fastest { background: linear-gradient(135deg, #ff1744, #d50000); }
+    .strongest { background: linear-gradient(135deg, #2196f3, #0d47a1); }
+    .road-legal { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+    .road-unleagal { background: linear-gradient(135deg, #ff9800, #e65100); }
+
+    .car-info h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .car-brand {
+      color: #ff6b35;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .car-specs {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .car-specs li {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .car-specs li::before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      color: #ff6b35;
+    }
+
+    .car-price {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: #ff6b35;
+      margin-bottom: 20px;
+    }
+
+    .car-actions {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-cart {
+      flex: 1;
+      padding: 12px;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cart:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255,107,53,0.3);
+    }
+
+    .btn-wishlist {
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,107,53,0.3);
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-wishlist:hover {
+      background: rgba(255,107,53,0.2);
+    }
+
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 80px 50px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(247,147,30,0.1));
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid rgba(255,107,53,0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255,107,53,0.2);
+    }
+
+    .stat-card h2 {
+      font-size: 3em;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .stat-card p {
+      font-size: 1.1em;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 100px 50px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(247,147,30,0.1));
+    }
+
+    .cta h2 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cta p {
+      font-size: 1.2em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5em;
+      }
+
+      .car-showcase {
+        width: 350px;
+        height: 200px;
+        margin-top: 40px;
+        font-size: 4em;
+      }
+
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .categories,
+      .stats,
+      .cta {
+        padding: 60px 20px;
+      }
+
+      .cars-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+
+      .car-card {
+        padding: 20px;
+      }
+
+      .category-filters {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EliteMotors</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒
+      <div class="cart-count" id="cartCount">0</div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="badge"><span>EXCLUSIVE</span> Premium Collection <strong>Available Now</strong></div>
+      <h1>
+        Drive Your Dreams with <br/>
+        <span class="gradient-text">Elite Automotive</span><br/>
+        Excellence
+      </h1>
+      <p>
+        Discover the world's most exceptional vehicles. From record-breaking supercars to legendary classics, 
+        find your perfect machine in our curated collection of automotive masterpieces.
+      </p>
+      <button class="btn-primary" onclick="scrollToCollection()">Explore Collection</button>
+      <button class="btn-secondary">Schedule Test Drive</button>
+    </div>
+    <div class="hero-visual">
+      <div class="car-showcase">
+        🏎️
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat-card">
+      <h2>500+</h2>
+      <p>Premium Vehicles</p>
+    </div>
+    <div class="stat-card">
+      <h2>50+</h2>
+      <p>Luxury Brands</p>
+    </div>
+    <div class="stat-card">
+      <h2>98%</h2>
+      <p>Customer Satisfaction</p>
+    </div>
+    <div class="stat-card">
+      <h2>24/7</h2>
+      <p>Concierge Service</p>
+    </div>
+  </section>
+
+  <section class="categories" id="collection">
+    <h2>Our Elite Collection</h2>
+    
+    <div class="category-filters">
+      <button class="category-btn active" onclick="filterCars('all')">All Cars</button>
+      <button class="category-btn" onclick="filterCars('fastest')">Fastest</button>
+      <button class="category-btn" onclick="filterCars('strongest')">Strongest</button>
+      <button class="category-btn" onclick="filterCars('road-legal')">Road Legal</button>
+      <button class="category-btn" onclick="filterCars('road-unleagal')">Track Only</button>
+    </div>
+
+    <div class="cars-grid" id="carsGrid">
+      <!-- FASTEST CATEGORY -->
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🏁<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Bugatti</div>
+          <h3>Chiron Super Sport 300+</h3>
+          <ul class="car-specs"><li>Top Speed: 304 mph</li><li>0-60 mph: 2.4 seconds</li><li>1,578 hp W16 Engine</li></ul>
+          <div class="car-price">$3,900,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Bugatti Chiron Super Sport 300+', 3900000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">⚡<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">SSC</div>
+          <h3>Tuatara</h3>
+          <ul class="car-specs"><li>Top Speed: 316 mph</li><li>1,750 hp Twin-Turbo V8</li><li>Carbon Fiber Construction</li></ul>
+          <div class="car-price">$1,900,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('SSC Tuatara', 1900000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🚀<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Koenigsegg</div>
+          <h3>Agera RS</h3>
+          <ul class="car-specs"><li>Top Speed: 278 mph</li><li>1,360 hp Twin-Turbo V8</li><li>World Record Holder</li></ul>
+          <div class="car-price">$2,500,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Koenigsegg Agera RS', 2500000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🔥<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Hennessey</div>
+          <h3>Venom GT</h3>
+          <ul class="car-specs"><li>Top Speed: 270 mph</li><li>1,244 hp Twin-Turbo V8</li><li>Lightweight Design</li></ul>
+          <div class="car-price">$1,200,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Hennessey Venom GT', 1200000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">💨<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Bugatti</div>
+          <h3>Veyron Super Sport</h3>
+          <ul class="car-specs"><li>Top Speed: 268 mph</li><li>1,200 hp W16 Engine</li><li>Legendary Hypercar</li></ul>
+          <div class="car-price">$2,400,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Bugatti Veyron Super Sport', 2400000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🌟<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">McLaren</div>
+          <h3>F1</h3>
+          <ul class="car-specs"><li>Top Speed: 243 mph</li><li>627 hp BMW V12</li><li>90s Icon</li></ul>
+          <div class="car-price">$20,000,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('McLaren F1', 20000000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">⭐<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Pagani</div>
+          <h3>Huayra BC</h3>
+          <ul class="car-specs"><li>Top Speed: 238 mph</li><li>791 hp Twin-Turbo V12</li><li>Art on Wheels</li></ul>
+          <div class="car-price">$2,800,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Pagani Huayra BC', 2800000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">✨<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Ferrari</div>
+          <h3>LaFerrari</h3>
+          <ul class="car-specs"><li>Top Speed: 217 mph</li><li>950 hp Hybrid V12</li><li>Limited Production</li></ul>
+          <div class="car-price">$3,500,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Ferrari LaFerrari', 3500000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🎯<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Lamborghini</div>
+          <h3>Aventador SVJ</h3>
+          <ul class="car-specs"><li>Top Speed: 217 mph</li><li>770 hp V12</li><li>Nürburgring Record</li></ul>
+          <div class="car-price">$517,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Lamborghini Aventador SVJ', 517000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🌪️<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Porsche</div>
+          <h3>918 Spyder</h3>
+          <ul class="car-specs"><li>Top Speed: 214 mph</li><li>887 hp Hybrid V8</li><li>Plug-in Hybrid</li></ul>
+          <div class="car-price">$1,800,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Porsche 918 Spyder', 1800000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🏃<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Aston Martin</div>
+          <h3>Valkyrie</h3>
+          <ul class="car-specs"><li>Top Speed: 250+ mph</li><li>1,160 hp Hybrid V12</li><li>F1 Technology</li></ul>
+          <div class="car-price">$3,200,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Aston Martin Valkyrie', 3200000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🚁<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Gordon Murray</div>
+          <h3>T.50</h3>
+          <ul class="car-specs"><li>Top Speed: 230 mph</li><li>654 hp V12 Cosworth</li><li>Fan Car Technology</li></ul>
+          <div class="car-price">$2,500,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Gordon Murray T.50', 2500000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="fastest">
+        <div class="car-image">🌈<div class="category-badge fastest">Fastest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Rimac</div>
+          <h3>Nevera</h3>
+          <ul class="car-specs"><li>Top Speed: 258 mph</li><li>1,914 hp Electric</li><li>Four Motor AWD</li></ul>
+          <div class="car-price">$2,400,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Rimac Nevera', 2400000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STRONGEST CATEGORY -->
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">💪<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Hennessey</div>
+          <h3>Venom F5 Revolution</h3>
+          <ul class="car-specs"><li>Power: 1,817 hp</li><li>Torque: 1,193 lb-ft</li><li>Twin-Turbo V8</li></ul>
+          <div class="car-price">$2,700,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Hennessey Venom F5 Revolution', 2700000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">⚡<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Dodge</div>
+          <h3>Challenger SRT Demon 170</h3>
+          <ul class="car-specs"><li>Power: 1,025 hp</li><li>Supercharged HEMI V8</li><li>Quarter Mile Beast</li></ul>
+          <div class="car-price">$96,666</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Dodge Challenger SRT Demon 170', 96666)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🔋<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Tesla</div>
+          <h3>Model S Plaid</h3>
+          <ul class="car-specs"><li>Power: 1,020 hp</li><li>Tri-Motor Electric</li><li>0-60: 1.99 seconds</li></ul>
+          <div class="car-price">$129,990</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Tesla Model S Plaid', 129990)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🔥<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Shelby</div>
+          <h3>GT500 Super Snake</h3>
+          <ul class="car-specs"><li>Power: 1,000+ hp</li><li>Supercharged V8</li><li>American Muscle</li></ul>
+          <div class="car-price">$180,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Shelby GT500 Super Snake', 180000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🚀<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Chevrolet</div>
+          <h3>Corvette ZR1</h3>
+          <ul class="car-specs"><li>Power: 755 hp</li><li>Supercharged LT5 V8</li><li>Top Fuel Technology</li></ul>
+          <div class="car-price">$123,995</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Chevrolet Corvette ZR1', 123995)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">💎<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Cadillac</div>
+          <h3>CT5-V Blackwing</h3>
+          <ul class="car-specs"><li>Power: 668 hp</li><li>Supercharged V8</li><li>Track Package</li></ul>
+          <div class="car-price">$84,990</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Cadillac CT5-V Blackwing', 84990)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🎭<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">BMW</div>
+          <h3>M5 CS</h3>
+          <ul class="car-specs"><li>Power: 627 hp</li><li>Twin-Turbo V8</li><li>Carbon Fiber Body</li></ul>
+          <div class="car-price">$142,895</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('BMW M5 CS', 142895)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🌊<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Mercedes-AMG</div>
+          <h3>GT Black Series</h3>
+          <ul class="car-specs"><li>Power: 720 hp</li><li>Twin-Turbo V8</li><li>Track-Focused</li></ul>
+          <div class="car-price">$325,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Mercedes-AMG GT Black Series', 325000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🎪<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Audi</div>
+          <h3>RS e-tron GT</h3>
+          <ul class="car-specs"><li>Power: 637 hp</li><li>Electric Quattro</li><li>Taycan Platform</li></ul>
+          <div class="car-price">$142,400</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Audi RS e-tron GT', 142400)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🌀<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Nissan</div>
+          <h3>GT-R Nismo</h3>
+          <ul class="car-specs"><li>Power: 600 hp</li><li>Twin-Turbo V6</li><li>Japanese Precision</li></ul>
+          <div class="car-price">$215,740</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Nissan GT-R Nismo', 215740)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="strongest">
+        <div class="car-image">🎨<div class="category-badge strongest">Strongest</div></div>
+        <div class="car-info">
+          <div class="car-brand">Jaguar</div>
+          <h3>F-Type SVR</h3>
+          <ul class="car-specs"><li>Power: 575 hp</li><li>Supercharged V8</li><li>British Engineering</li></ul>
+          <div class="car-price">$125,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Jaguar F-Type SVR', 125000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROAD LEGAL CATEGORY -->
+      <div class="car-card" data-category="road-legal">
+        <div class="car-image">🛣️<div class="category-badge road-legal">Road Legal</div></div>
+        <div class="car-info">
+          <div class="car-brand">Koenigsegg</div>
+          <h3>Jesko Absolut</h3>
+          <ul class="car-specs"><li>1,600 hp Twin-Turbo V8</li><li>Street Legal Certification</li><li>Active Aerodynamics</li></ul>
+          <div class="car-price">$3,400,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Koenigsegg Jesko Absolut', 3400000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="road-legal">
+        <div class="car-image">🏆<div class="category-badge road-legal">Road Legal</div></div>
+        <div class="car-info">
+          <div class="car-brand">McLaren</div>
+          <h3>Speedtail</h3>
+          <ul class="car-specs"><li>1,035 hp Hybrid</li><li>3-Seat Configuration</li><li>Teardrop Design</li></ul>
+          <div class="car-price">$2,250,000</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('McLaren Speedtail', 2250000)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="road-legal">
+        <div class="car-image">✅<div class="category-badge road-legal">Road Legal</div></div>
+        <div class="car-info">
+          <div class="car-brand">Ferrari</div>
+          <h3>SF90 Stradale</h3>
+          <ul class="car-specs"><li>986 hp Hybrid V8</li><li>AWD System</li><li>Electric Motors</li></ul>
+          <div class="car-price">$507,300</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Ferrari SF90 Stradale', 507300)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="road-legal">
+        <div class="car-image">🎖️<div class="category-badge road-legal">Road Legal</div></div>
+        <div class="car-info">
+          <div class="car-brand">Lamborghini</div>
+          <h3>Revuelto</h3>
+          <ul class="car-specs"><li>1,001 hp Hybrid V12</li><li>Plug-in Hybrid</li><li>AWD System</li></ul>
+          <div class="car-price">$608,358</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Lamborghini Revuelto', 608358)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card" data-category="road-legal">
+        <div class="car-image">🌟<div class="category-badge road-legal">Road Legal</div></div>
+        <div class="car-info">
+          <div class="car-brand">Porsche</div>
+          <h3>911 Turbo S</h3>
+          <ul class="car-specs"><li>640 hp Twin-Turbo</li><li>PDK Transmission</li><li>AWD Traction</li></ul>
+          <div class="car-price">$230,400</div>
+          <div class="car-actions">
+            <button class="btn-cart" onclick="addToCart('Porsche 911 Turbo S', 230400)">Add to Cart</button>
+            <button class="btn-wishlist">💖</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-
+  </section>
+
+  <section class="cta">
+    <h2>Ready to Own Your Dream Car?</h2>
+    <p>
+      Experience automotive excellence like never before. Our expert team provides personalized service 
+      to help you find the perfect vehicle that matches your passion and lifestyle.
+    </p>
+    <button class="btn-primary">Schedule Consultation</button>
+    <button class="btn-secondary">View Financing Options</button>
+  </section>
+
+  <script>
+    let cart = [];
+    let cartCount = 0;
+
+    function addToCart(carName, price) {
+      cart.push({ name: carName, price: price });
+      cartCount++;
+      document.getElementById('cartCount').textContent = cartCount;
+      
+      // Visual feedback
+      const button = event.target;
+      const originalText = button.textContent;
+      button.textContent = 'Added!';
+      button.style.background = '#4caf50';
+      
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.style.background = 'linear-gradient(135deg, #ff6b35, #f7931e)';
+      }, 1500);
+    }
+
+    function toggleCart() {
+      if (cart.length === 0) {
+        alert('Your cart is empty. Add some amazing cars!');
+        return;
+      }
+      
+      let cartItems = 'Your Cart:\n\n';
+      let total = 0;
+      cart.forEach((item, index) => {
+        cartItems += `${index + 1}. ${item.name} - $${item.price.toLocaleString()}\n`;
+        total += item.price;
+      });
+      cartItems += `\nTotal: $${total.toLocaleString()}`;
+      
+      alert(cartItems);
+    }
+
+    function filterCars(category) {
+      const cards = document.querySelectorAll('.car-card');
+      const buttons = document.querySelectorAll('.category-btn');
+      
+      // Update active button
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter cards
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.style.display = 'block';
+          card.style.animation = 'fadeInUp 0.5s ease-out';
+        } else {
+          if (card.dataset.category === category) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.5s ease-out';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    function scrollToCollection() {
+      document.getElementById('collection').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Animate stats on scroll
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(document.querySelector('.stats'));
+
+    function animateStats() {
+      const stats = document.querySelectorAll('.stat-card h2');
+      stats.forEach(stat => {
+        const text = stat.textContent;
+        const number = parseInt(text.replace(/[^0-9]/g, ''));
+        const suffix = text.replace(/[0-9]/g, '');
+        let current = 0;
+        const increment = number / 50;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= number) {
+            stat.textContent = number + suffix;
+            clearInterval(timer);
+          } else {
+            stat.textContent = Math.floor(current) + suffix;
+          }
+        }, 30);
+      });
+    }
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to car cards
+    const carCards = document.querySelectorAll('.car-card');
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    carCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.6s ease';
+      cardObserver.observe(card);
+    });
+
+    // Interactive wishlist
+    document.querySelectorAll('.btn-wishlist').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.textContent === '💖') {
+          this.textContent = '❤️';
+          this.style.background = 'rgba(255, 23, 68, 0.2)';
+        } else {
+          this.textContent = '💖';
+          this.style.background = 'rgba(255,255,255,0.1)';
+        }
+      });
+    });
+  </script>
+</body>
+        </html>
